@@ -6,7 +6,7 @@ import { createProductsDto } from 'src/dto/create-products-dto';
 import { updateProductsDto } from 'src/dto/update-products-dto';
 
 @Injectable()
-export class productsService {
+export class ProductsService {
     constructor(@InjectModel(products.name) private productsModel: Model<products>){}
 
     finAll(){
