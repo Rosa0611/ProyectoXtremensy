@@ -1,25 +1,32 @@
 import { DescriptionAndOptions } from "@nestjs/common";
 import { IsString, IsNumber, IsNotEmpty } from "class-validator";
 
-export class CreateSuppliersDto {
-    @IsNumber()
+export class CreateUsersDto {
+    @IsString()
     @IsNotEmpty()
-    nit: number;
+    nombre: string;
 
     @IsString()
     @IsNotEmpty()
-    proveedor: string;
-
-    @IsNumber()
-    @IsNotEmpty()
-    celular: number;
+    apellido: string;
 
     @IsString()
     @IsNotEmpty()
     email: string;
 
+    @IsNumber()
+    @IsNotEmpty()
+    edad: number;
+
     @IsString()
     @IsNotEmpty()
-    tipoProducto: string;
+    username: string;
 
+    @IsString()
+    @IsNotEmpty()
+    contraseña: string;
+
+    @IsNumber()
+    @IsNotEmpty()
+    telefono: number;
 }

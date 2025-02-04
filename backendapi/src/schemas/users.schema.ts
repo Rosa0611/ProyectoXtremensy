@@ -4,62 +4,56 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
     timestamps: true
 })
 
-export class Products {
+export class Users {
     @Prop({
         required: true,
         trim: true
     })
-    categoria: string;
+    nombre: string;
 
     @Prop({
         required: true,
-        trim: true,
-        unique: true
+        trim: true
     })
-    producto: string;
+    apellido: string;
 
     @Prop({
         required: true,
         unique: true,
         trim: true
     })
-    referencia: number;
+    email: string;
 
     @Prop({
         required: true,
         trim: true
     })
-    tamaño: number;
+    edad: number;
     
     @Prop({
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     })
-    medida: string;
-    
-    @Prop({
-        required: true,
-        trim: true
-    })
-    cantidad: number;
-    
-    @Prop({
-        required: true,
-        trim: true
-    })
-    precio: number;
-    
-    @Prop({
-        required: true,
-        trim: true
-    })
-    total: number;
+    username: string;
 
     @Prop({
         required: true,
         trim: true
     })
-    status: boolean;
+    rol: string;
+    
+    @Prop({
+        required: true,
+        trim: true
+    })
+    contraseña: string;
+    
+    @Prop({
+        required: true,
+        trim: true
+    })
+    telefono: number;
 }
 
-export const ProductSchema = SchemaFactory.createForClass(Products);
+export const UsersSchema = SchemaFactory.createForClass(Users);
