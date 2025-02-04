@@ -29,13 +29,6 @@ export class Users {
         trim: true
     })
     edad: number;
-    
-    @Prop({
-        required: true,
-        trim: true,
-        unique: true
-    })
-    username: string;
 
     @Prop({
         required: true,
@@ -45,15 +38,11 @@ export class Users {
     
     @Prop({
         required: true,
+        unique: true,
         trim: true
     })
     contraseña: string;
     
-    @Prop({
-        required: true,
-        trim: true
-    })
-    telefono: number;
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users);

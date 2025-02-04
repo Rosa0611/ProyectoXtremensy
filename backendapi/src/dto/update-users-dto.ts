@@ -20,13 +20,10 @@ export class UpdateUsersDto {
 
         @IsString()
         @IsOptional()
-        username?: string;
+        rol?: string;
 
         @IsString()
         @IsOptional()
         contraseña?: string;
 
-        @IsNumber()
-        @IsOptional()
-        telefono?: number;
 }

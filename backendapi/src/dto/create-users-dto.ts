@@ -20,13 +20,10 @@ export class CreateUsersDto {
 
     @IsString()
     @IsNotEmpty()
-    username: string;
+    rol: string;
 
     @IsString()
     @IsNotEmpty()
     contraseña: string;
 
-    @IsNumber()
-    @IsNotEmpty()
-    telefono: number;
 }
