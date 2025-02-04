@@ -54,6 +54,12 @@ export class products {
         trim: true
     })
     total: number;
+
+    @Prop({
+        required: true,
+        trim: true
+    })
+    status: boolean;
 }
 
-export const productsSchema = SchemaFactory.createForClass(products);
+export const ProductSchema = SchemaFactory.createForClass(products);
