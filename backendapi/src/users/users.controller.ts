@@ -26,15 +26,12 @@ export class UsersController {
 
     @Get()
     async findAll() {
-        try {
+        
             const user = await this.usersService.finAll();
             if (!user || user.length === 0){
                 throw new NotFoundException('La base de datos esta vacia');
             } 
-            return user;
-        } catch (error) {
-            throw error;
-        }
+            return user;       
     }
 
     @Get(':id')

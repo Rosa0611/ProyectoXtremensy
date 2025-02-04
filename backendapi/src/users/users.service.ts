@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Users } from 'src/schemas/users.schema';
 import { CreateUsersDto } from 'src/dto/create-users-dto';
 import { UpdateUsersDto } from 'src/dto/update-users-dto';
+import { ConflictException } from '@nestjs/common';
 
 @Injectable()
 export class UsersService {
@@ -13,16 +14,23 @@ export class UsersService {
         return this.usersModel.find();
     }
 
-    async create(createUser: CreateUsersDto){
-        const newuser = new this.usersModel(createUser);
-        return newuser.save();
+    async create(createUser: CreateUsersDto): Promise<Users> {
+        const exists = await this.usersModel.findOne({ email: createUser.email });
+        if (exists) throw new ConflictException('El email ya está registrado');
+        
+        const newUser = new this.usersModel(createUser);
+        return newUser.save();
     }
 
-    async findOne(id: string){
+    async findOneByEmail(email: string): Promise<Users | null> {
+        return this.usersModel.findOne({ email }).select('+contraseña').exec();
+    }
+
+    async findOne(id: string) {
         return this.usersModel.findById(id);
     }
 
-    async update(id: string, updateUser: UpdateUsersDto){
+    async update(id: string, updateUser: any){
         return this.usersModel.findByIdAndUpdate(id, updateUser, {new: true});
     }
 
