@@ -10,7 +10,9 @@ import { SuppliersModule } from './suppliers/suppliers.module';
       dbName: 'xtremensy',
     }
   ),
-    ProductsModule
+    ProductsModule,
+    UsersModule,
+    SuppliersModule
   ],
 
 })

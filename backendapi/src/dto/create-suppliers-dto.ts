@@ -1,7 +1,7 @@
 import { DescriptionAndOptions } from "@nestjs/common";
 import { IsString, IsNumber, IsNotEmpty } from "class-validator";
 
-export class createSuppliersDto {
+export class CreateSuppliersDto {
     @IsNumber()
     @IsNotEmpty()
     nit: number;
@@ -16,6 +16,10 @@ export class createSuppliersDto {
 
     @IsString()
     @IsNotEmpty()
+    email: string;
+
+    @IsString()
+    @IsNotEmpty()
     tipoProducto: string;
-    
+
 }

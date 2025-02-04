@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
     timestamps: true
 })
 
-export class suppliers {
+export class Suppliers {
     @Prop({
         required: true,
         trim: true,
@@ -26,9 +26,15 @@ export class suppliers {
 
     @Prop({
         required: true,
+        trim: true,
+        unique: true
+    })
+    email: string;
+
+    @Prop({
+        required: true,
         trim: true
     })
     tipoProducto: string;
-
 }
-export const SuppliersSchema = SchemaFactory.createForClass(suppliers);
+export const SuppliersSchema = SchemaFactory.createForClass(Suppliers);

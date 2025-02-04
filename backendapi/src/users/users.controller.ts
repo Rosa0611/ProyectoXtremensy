@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Delete, Put, Body, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { createUsersDto } from 'src/dto/create-users-dto';
-import { updateUsersDto } from 'src/dto/update-users-dto';
+import { CreateUsersDto } from 'src/dto/create-users-dto';
+import { UpdateUsersDto } from 'src/dto/update-users-dto';
 import { ConflictException } from '@nestjs/common';
 import {NotFoundException} from '@nestjs/common';
 import { HttpCode } from '@nestjs/common';
@@ -12,7 +12,7 @@ export class UsersController {
     }
 
     @Post('/')
-    async create(@Body() body:createUsersDto){
+    async create(@Body() body:CreateUsersDto){
         try {
             return await this.usersService.create(body);  
         } catch (error) {
@@ -52,7 +52,7 @@ export class UsersController {
 
 
     @Put(':id')
-    async update(@Param('id') id:string, @Body() body: updateUsersDto){
+    async update(@Param('id') id:string, @Body() body: UpdateUsersDto){
         try { 
             const user = await this.usersService.update(id,body);
             if(!user){

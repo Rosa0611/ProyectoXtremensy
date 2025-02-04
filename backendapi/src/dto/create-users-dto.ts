@@ -1,7 +1,7 @@
 import { DescriptionAndOptions } from "@nestjs/common";
 import { IsString, IsNumber, IsNotEmpty } from "class-validator";
 
-export class createUsersDto {
+export class CreateUsersDto {
     @IsString()
     @IsNotEmpty()
     nombre: string;

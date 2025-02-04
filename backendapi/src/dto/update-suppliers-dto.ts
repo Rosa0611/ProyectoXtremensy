@@ -1,18 +1,25 @@
-import { IsString, IsNumber, IsOptional} from "class-validator";
+import { IsString, IsNumber, IsOptional } from "class-validator";
 
-export class updateSuppliersDto {
-
-
-    @IsString()
-    @IsOptional()
-    proveedor: string;
+export class UpdateSuppliersDto {
 
     @IsNumber()
     @IsOptional()
-    celular: number;
+    nit?: number;
 
     @IsString()
     @IsOptional()
-    tipoProducto: string;
-    
+    proveedor?: string;
+
+    @IsNumber()
+    @IsOptional()
+    celular?: number;
+
+    @IsString()
+    @IsOptional()
+    email?: string;
+
+    @IsString()
+    @IsOptional()
+    tipoProducto?: string;
+
 }

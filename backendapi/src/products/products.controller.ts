@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Delete, Put, Body, Param } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { createProductsDto } from 'src/dto/create-products-dto';
-import { updateProductsDto } from 'src/dto/update-products-dto';
+import { CreateProductsDto } from 'src/dto/create-products-dto';
+import { UpdateProductsDto } from 'src/dto/update-products-dto';
 import { ConflictException } from '@nestjs/common';
 import {NotFoundException} from '@nestjs/common';
 import { HttpCode } from '@nestjs/common';
@@ -12,7 +12,7 @@ export class ProductsController {
     }
 
     @Post('/')
-    async create(@Body() body:createProductsDto){
+    async create(@Body() body:CreateProductsDto){
         try {
             return await this.productsService.create(body);  
         } catch (error) {
@@ -52,7 +52,7 @@ export class ProductsController {
 
 
     @Put(':id')
-    async update(@Param('id') id:string, @Body() body: updateProductsDto){
+    async update(@Param('id') id:string, @Body() body: UpdateProductsDto){
         try { 
             const prod = await this.productsService.update(id,body);
             if(!prod){

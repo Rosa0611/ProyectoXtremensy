@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
     timestamps: true
 })
 
-export class users {
+export class Users {
     @Prop({
         required: true,
         trim: true
@@ -56,4 +56,4 @@ export class users {
     telefono: number;
 }
 
-export const usersSchema = SchemaFactory.createForClass(users);
+export const UsersSchema = SchemaFactory.createForClass(Users);

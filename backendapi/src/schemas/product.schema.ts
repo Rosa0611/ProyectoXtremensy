@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
     timestamps: true
 })
 
-export class products {
+export class Products {
     @Prop({
         required: true,
         trim: true
@@ -62,4 +62,4 @@ export class products {
     status: boolean;
 }
 
-export const ProductSchema = SchemaFactory.createForClass(products);
+export const ProductSchema = SchemaFactory.createForClass(Products);
