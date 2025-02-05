@@ -4,30 +4,23 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
     timestamps: true
 })
 
-export class Suppliers {
+export class Users {
     @Prop({
         required: true,
-        trim: true,
-        unique: true
+        trim: true
     })
-    nit: number;
+    nombre: string;
 
     @Prop({
         required: true,
         trim: true
     })
-    proveedor: string;
+    apellido: string;
 
     @Prop({
         required: true,
+        unique: true,
         trim: true
-    })
-    celular: number;
-
-    @Prop({
-        required: true,
-        trim: true,
-        unique: true
     })
     email: string;
 
@@ -35,6 +28,21 @@ export class Suppliers {
         required: true,
         trim: true
     })
-    tipoProducto: string;
+    edad: number;
+
+    @Prop({
+        required: true,
+        trim: true
+    })
+    rol: string;
+    
+    @Prop({
+        required: true,
+        unique: true,
+        trim: true
+    })
+    contraseña: string;
+    
 }
-export const SuppliersSchema = SchemaFactory.createForClass(Suppliers);
+
+export const UsersSchema = SchemaFactory.createForClass(Users);

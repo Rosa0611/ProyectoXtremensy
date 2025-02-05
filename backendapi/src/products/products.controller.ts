@@ -1,18 +1,18 @@
 import { Controller, Get, Post, Delete, Put, Body, Param } from '@nestjs/common';
-import { productsService } from './products.service';
-import { createProductsDto } from 'src/dto/create-products-dto';
-import { updateProductsDto } from 'src/dto/update-products-dto';
+import { ProductsService } from './products.service';
+import { CreateProductsDto } from 'src/dto/create-products-dto';
+import { UpdateProductsDto } from 'src/dto/update-products-dto';
 import { ConflictException } from '@nestjs/common';
 import {NotFoundException} from '@nestjs/common';
 import { HttpCode } from '@nestjs/common';
 
 @Controller('products')
 export class ProductsController {
-    constructor(private productsService: productsService) {
+    constructor(private productsService: ProductsService) {
     }
 
     @Post('/')
-    async create(@Body() body:createProductsDto){
+    async create(@Body() body:CreateProductsDto){
         try {
             return await this.productsService.create(body);  
         } catch (error) {
@@ -25,18 +25,26 @@ export class ProductsController {
 
 
     @Get()
-    findAll() {
-        return this.productsService.finAll();
+    async findAll() {
+        try {
+            const prod = await this.productsService.finAll();
+            if (!prod || prod.length === 0){
+                throw new NotFoundException('La base de datos esta vacia');
+            } 
+            return prod;
+        } catch (error) {
+            throw error;
+        }
     }
 
     @Get(':id')
     async findOne(@Param('id') id:string){
         try {
-            const act = await this.productsService.findOne(id);
-            if (!act ){
+            const prod = await this.productsService.findOne(id);
+            if (!prod ){
                 throw new NotFoundException('El producto no existe');
             } 
-            return act;
+            return prod;
         } catch (error) {
             throw error;
         }
@@ -44,13 +52,13 @@ export class ProductsController {
 
 
     @Put(':id')
-    async update(@Param('id') id:string, @Body() body: updateProductsDto){
+    async update(@Param('id') id:string, @Body() body: UpdateProductsDto){
         try { 
-            const act = await this.productsService.update(id,body);
-            if(!act){
+            const prod = await this.productsService.update(id,body);
+            if(!prod){
                 throw new NotFoundException('La Actividad no Existe');
             }
-            return act;
+            return prod;
         } catch (error) {
             throw error;
         }      
@@ -61,11 +69,11 @@ export class ProductsController {
     @HttpCode(204)
     async delete(@Param('id') id:string){
         try {
-            const act = await this.productsService.delete(id);
-            if (!act ){
+            const prod = await this.productsService.delete(id);
+            if (!prod ){
                 throw new NotFoundException('El producto no existe');
             } 
-            return act;
+            return prod;
         } catch (error) {
             throw error;
         }
