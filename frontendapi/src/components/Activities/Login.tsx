@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -17,10 +16,22 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", credentials);
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(credentials),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error en la autenticación");
+      }
+
+      const data = await response.json();
       
-      // Guardar el token en el localStorage
-      localStorage.setItem("token", response.data.token);
+      // Guardar el token en localStorage
+      localStorage.setItem("token", data.token);
 
       // Redirigir al usuario a la página de productos o dashboard
       navigate("/productos");
