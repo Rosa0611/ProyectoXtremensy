@@ -19,21 +19,18 @@ export class Users extends Document {
     @Prop({ required: true })
     rol: string;
 
-    @Prop({ required: true, select: false }) // Ocultar por defecto
+    @Prop({ required: true, select: false })
     contraseña: string;
-
-    async comparePassword(attempt: string): Promise<boolean> {
-        return bcrypt.compare(attempt, this.contraseña);
-    }
 }
 
-export const UsersSchema = SchemaFactory.createForClass(Users);
+// Middleware para encriptar la contraseña antes de guardar
+const UsersSchema = SchemaFactory.createForClass(Users);
 
-// Middleware para hashear la contraseña antes de guardar
-UsersSchema.pre<Users>('save', async function(next) {
+UsersSchema.pre('save', async function (next) {
     if (!this.isModified('contraseña')) return next();
-    
     const salt = await bcrypt.genSalt(10);
     this.contraseña = await bcrypt.hash(this.contraseña, salt);
     next();
 });
+
+export { UsersSchema };

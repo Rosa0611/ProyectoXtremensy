@@ -1,26 +1,31 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
+import * as bcrypt from 'bcrypt';
+import { JwtPayload } from './jwt-payload.interface';
+import { Types } from 'mongoose'; 
 
 @Injectable()
 export class AuthService {
     constructor(
         private usersService: UsersService,
-        private jwtService: JwtService
+        private jwtService: JwtService,
     ) {}
 
-    async validateUser(email: string, password: string): Promise<any> {
-        const user = await this.usersService.findOneByEmail(email);
-        if (!user || !(await user.comparePassword(password))) {
-            throw new UnauthorizedException('Credenciales inválidas');
+    async login(email: string, contraseña: string) {
+        const user = await this.usersService.findByEmail(email);
+        if (!user) {
+            throw new UnauthorizedException('Credenciales incorrectas');
         }
-        return user;
-    }
 
-    async login(user: any) {
-        const payload = { email: user.email, sub: user._id };
-        return {
-            access_token: this.jwtService.sign(payload),
-        };
+        const isPasswordValid = await bcrypt.compare(contraseña, user.contraseña);
+        if (!isPasswordValid) {
+            throw new UnauthorizedException('Credenciales incorrectas');
+        }
+
+        const payload: JwtPayload = { userId: (user._id as Types.ObjectId).toHexString() };
+        const accessToken = this.jwtService.sign(payload);
+
+        return { accessToken };
     }
 }
