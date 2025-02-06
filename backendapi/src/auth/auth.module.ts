@@ -5,7 +5,6 @@ import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
 import { JwtStrategy } from './jwt.strategy';
 
-console.log('JWT_SECRET:', process.env.JWT_SECRET);
 @Module({
     imports: [
         UsersModule,
