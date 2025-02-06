@@ -29,3 +29,19 @@ export const createActivityRequest = (activity: Activity) =>
             'Content-Type': 'application/json'
         }
     });
+
+    export const updateActivity = async (id: number, updatedData: any) => {
+        try {
+          const response = await fetch(`/api/activities/${id}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatedData),
+          });
+          return await response.json();
+        } catch (error) {
+          console.error("Error al actualizar la actividad:", error);
+        }
+      };
+      

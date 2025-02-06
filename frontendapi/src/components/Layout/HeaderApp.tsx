@@ -1,47 +1,54 @@
 import { useState } from "react";
 import { UserCircleIcon } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom"; // Importa Link
 import logo from "../../assets/Logo.png"; // Importa el logo
 
 function HeaderApp() {
-const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-return (
+  return (
     <header className="flex items-center justify-between bg-red-700 p-4 text-white">
       {/* Logo */}
-    <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <img src={logo} alt="MyCompany" className="h-15 w-30" />
-    </div>
+      </div>
 
       {/* Menú de usuario */}
-    <div className="relative">
+      <div className="relative">
         {/* Botón para abrir/cerrar menú */}
         <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 p-2 rounded-full hover:bg-indigo-600 focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center gap-2 p-2 rounded-full hover:bg-indigo-600 focus:outline-none"
         >
-        <UserCircleIcon className="h-8 w-8 text-white" />
+          <UserCircleIcon className="h-8 w-8 text-white" />
         </button>
 
         {/* Dropdown Menu */}
         {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg overflow-hidden">
-            <a
-            href="/perfil"
-            className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200"
+          <div className="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg overflow-hidden">
+            <Link
+              to="/login" // Redirige a la página de login
+              className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200"
             >
-            Mi Perfil
-            </a>
+              Iniciar sesión
+            </Link>
+            <Link
+              to="/register" // Redirige a la página de registro
+              className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-200"
+            >
+              Registrarse
+            </Link>
             <button
-            onClick={() => alert("Cerrando sesión...")}
-            className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-200"
+              onClick={() => alert("Cerrando sesión...")}
+              className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-200"
             >
-            Cerrar sesión
+              Cerrar sesión
             </button>
-        </div>
+          </div>
         )}
-    </div>
+      </div>
     </header>
-);
+  );
 }
 
 export default HeaderApp;
