@@ -9,17 +9,18 @@ const Conta = () => {
         </p>
             <div className="flex space-x-12 mt-8 text-center">
             {[
-            { src: "src/assets/Equipo/1.jpeg", name: "Ruben Alejandro Diaz Cardenas", role: "CEO", age: "25 años" },
-            { src: "src/assets/Equipo/2.jpg", name: "Rosa Isabel Rosero Cartagena", role: "CTO", age: "25 años" },
-            { src: "src/assets/Equipo/3.jpeg", name: "Carlos Andres Viveros", role: "Diseñador", age: "25 años" },
-            { src: "src/assets/Equipo/5.jpg", name: "Ian Andres Abadia Alba", role: "Desarrolladora", age: "25 año" },
-            { src: "src/assets/Equipo/4.jpg", name: "Ana Paula Valencia", role: "Marketing", age: "25 años" },
+            { src: "src/assets/Equipo/1.jpeg", name: "Ruben Alejandro Diaz Cardenas", role: "Desarrollador Backend", age: "22 años", experience: "aprendi a trabajar en equipo y  usar de forma correcta el tiempo." },
+            { src: "src/assets/Equipo/rosa.jpeg", name: "Rosa Isabel Rosero Cartagena", role: "Desarrolladora Backend", age: "24 años", experience: "Aprendí a trabajar en equipo y  usar de forma correcta el tiempo." },
+            { src: "src/assets/Equipo/3.jpeg", name: "Carlos Andres Viveros", role: "Desarrollador Frontend", age: "25 años", experience: "aprendi a trabajar en equipo y  usar de forma correcta el tiempo." },
+            { src: "src/assets/Equipo/ian.jpeg", name: "Ian Andres Abadia Alba", role: "Desarrollador Frontend", age: "28 años", experience: "adquiri nuevos conocimientos y lenguajes de programación" },
+            { src: "src/assets/Equipo/ana.jpeg", name: "Ana Laura Valencia", role: "Diseñadora Frontend", age: "25 años", experience: "mejore conceptos y habilidades que ya había adquirido en mis estudios anteriores" },
             ].map((member, index) => (
                 <div key={index} className="flex flex-col items-center">
                     <img src={member.src} alt={member.name} className="w-32 h-32 rounded-full object-cover" />
                     <p className="mt-2 text-lg font-semibold">{member.name}</p>
                     <p className="text-sm text-gray-400">{member.role}</p>
                     <p className="text-sm text-gray-400">{member.age}</p>
+                    <p className="text-sm text-gray-400">{member.experience}</p>
                 </div>
             ))}
             </div>
