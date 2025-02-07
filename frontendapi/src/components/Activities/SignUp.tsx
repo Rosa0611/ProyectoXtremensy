@@ -14,26 +14,29 @@ const SignUp = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("http://localhost:3000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (!response.ok) {
-        throw new Error("Error en el registro");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Error en el registro");
       }
-
+  
       // Redirigir a la página de login después de registrarse
       navigate("/login");
     } catch (error) {
-      console.error("Error al registrarse: ", error);
+      console.error("Error al registrarse: ", error.message);
+      alert(error.message || "Error en el registro, intente nuevamente.");
     }
   };
+  
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">

@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
@@ -23,22 +23,21 @@ const Login = () => {
         },
         body: JSON.stringify(credentials),
       });
-
+  
       if (!response.ok) {
-        throw new Error("Error en la autenticación");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Error en la autenticación");
       }
-
+  
       const data = await response.json();
-      
-      // Guardar el token en localStorage
       localStorage.setItem("token", data.token);
-
-      // Redirigir al usuario a la página de productos o dashboard
       navigate("/productos");
     } catch (error) {
-      console.error("Error al iniciar sesión: ", error);
+      console.error("Error al iniciar sesión: ", error.message);
+      alert("Credenciales inválidas. Intente de nuevo.");
     }
   };
+  
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">

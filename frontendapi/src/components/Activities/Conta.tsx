@@ -11,7 +11,7 @@ const Conta = () => {
             {[
             { src: "src/assets/Equipo/1.jpeg", name: "Ruben Alejandro Diaz Cardenas", role: "Desarrollador Backend", age: "22 años", experience: "aprendi a trabajar en equipo y  usar de forma correcta el tiempo." },
             { src: "src/assets/Equipo/rosa.jpeg", name: "Rosa Isabel Rosero Cartagena", role: "Desarrolladora Backend", age: "24 años", experience: "Aprendí a trabajar en equipo y  usar de forma correcta el tiempo." },
-            { src: "src/assets/Equipo/3.jpeg", name: "Carlos Andres Viveros", role: "Desarrollador Frontend", age: "25 años", experience: "aprendi a trabajar en equipo y  usar de forma correcta el tiempo." },
+            { src: "src/assets/Equipo/3.jpeg", name: "Carlos Andres Viveros", role: "Desarrollador Frontend", age: "2 años", experience: "aprendi a trabajar en equipo y  usar de forma correcta el tiempo." },
             { src: "src/assets/Equipo/ian.jpeg", name: "Ian Andres Abadia Alba", role: "Desarrollador Frontend", age: "28 años", experience: "adquiri nuevos conocimientos y lenguajes de programación" },
             { src: "src/assets/Equipo/ana.jpeg", name: "Ana Laura Valencia", role: "Diseñadora Frontend", age: "25 años", experience: "mejore conceptos y habilidades que ya había adquirido en mis estudios anteriores" },
             ].map((member, index) => (
