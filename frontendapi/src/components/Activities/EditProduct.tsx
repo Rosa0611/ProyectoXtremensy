@@ -58,83 +58,96 @@ const EditProduct = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg w-full max-w-lg">
-        <h2 className="text-center text-2xl font-bold mb-4">Editar Producto</h2>
-        <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="producto"
-            value={product.producto}
-            onChange={handleChange}
-            placeholder="Nombre del producto"
-            required
+    <div className="relative bg-white h-screen flex items-center justify-start p-10 overflow-hidden">
+      <div className="absolute top-0 right-0 h-full w-1/2 overflow-hidden">
+        <div className="absolute bg-red-800 top-0 right-0 h-full w-[calc(100%+1cm)] transform skew-x-[-15deg] origin-bottom-right"></div>
+        <div className="absolute top-0 right-0 h-full w-full bg-black-600 transform skew-x-[-15deg] origin-bottom-right">
+          <img
+              src="src/assets/labios2.jpg"
+            alt="Imagen decorativa"
+            className="absolute top-0 right-0 w-full h-full object-cover opacity-100"
           />
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="categoria"
-            value={product.categoria}
-            onChange={handleChange}
-            placeholder="Categoría"
-            required
-          />
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="referencia"
-            value={product.referencia}
-            onChange={handleChange}
-            placeholder="Referencia"
-            required
-          />
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="tamaño"
-            value={product.tamaño}
-            onChange={handleChange}
-            placeholder="Tamaño"
-            required
-          />
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="medida"
-            value={product.medida}
-            onChange={handleChange}
-            placeholder="Medida"
-            required
-          />
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="cantidad"
-            value={product.cantidad}
-            onChange={handleChange}
-            placeholder="Cantidad"
-            required
-          />
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="precio"
-            value={product.precio}
-            onChange={handleChange}
-            placeholder="Precio"
-            required
-          />
-          <input
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
-            name="total"
-            value={product.total}
-            onChange={handleChange}
-            placeholder="Total"
-            required
-          />
-          <div className="col-span-2 flex justify-center mt-6">
-            <button type="submit" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-              Guardar Cambios
-            </button>
-          </div>
-        </form>
+        </div>
+      </div>
+      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+          <h2 className="text-center text-2xl font-bold mb-4">Editar Producto</h2>
+          <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="producto"
+              value={product.producto}
+              onChange={handleChange}
+              placeholder="Nombre del producto"
+              required
+            />
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="categoria"
+              value={product.categoria}
+              onChange={handleChange}
+              placeholder="Categoría"
+              required
+            />
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="referencia"
+              value={product.referencia}
+              onChange={handleChange}
+              placeholder="Referencia"
+              required
+            />
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="tamaño"
+              value={product.tamaño}
+              onChange={handleChange}
+              placeholder="Tamaño"
+              required
+            />
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="medida"
+              value={product.medida}
+              onChange={handleChange}
+              placeholder="Medida"
+              required
+            />
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="cantidad"
+              value={product.cantidad}
+              onChange={handleChange}
+              placeholder="Cantidad"
+              required
+            />
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="precio"
+              value={product.precio}
+              onChange={handleChange}
+              placeholder="Precio"
+              required
+            />
+            <input
+              className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 text-black dark:text-white"
+              name="total"
+              value={product.total}
+              onChange={handleChange}
+              placeholder="Total"
+              required
+            />
+            <div className="col-span-2 flex justify-center mt-6">
+              <button type="submit" className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                Guardar Cambios
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
 };
 
 export default EditProduct;
+

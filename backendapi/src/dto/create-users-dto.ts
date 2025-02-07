@@ -1,5 +1,4 @@
-import { DescriptionAndOptions } from "@nestjs/common";
-import { IsString, IsNumber, IsNotEmpty } from "class-validator";
+import { IsString, IsNumber, IsNotEmpty, MinLength} from "class-validator";
 
 export class CreateUsersDto {
     @IsString()
@@ -23,6 +22,7 @@ export class CreateUsersDto {
     rol: string;
 
     @IsString()
+    @MinLength(8)
     @IsNotEmpty()
     contraseña: string;
 
